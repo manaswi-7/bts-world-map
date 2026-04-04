@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BTS World Tour Map 🌍</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: linear-gradient(to right, #a18cd1, #fbc2eb);
+        }
+
+        h1 {
+            color: purple;
+        }
+
+        #map {
+            height: 500px;
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+            border-radius: 12px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: purple;
+            color: white;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>BTS World Tour Map 🌍</h1>
+
+<input type="text" id="searchBox" placeholder="Search city...">
+<button onclick="searchPlace()">Search</button>
+
+<br>
+
+<button onclick="filterMonth('All')">All</button>
+<button onclick="filterMonth('April')">Apr 2026</button>
+<button onclick="filterMonth('May')">May 2026</button>
+<button onclick="filterMonth('June')">June 2026</button>
+<button onclick="filterMonth('July')">July 2026</button>
+<button onclick="filterMonth('August')">Aug 2026</button>
+<button onclick="filterMonth('September')">Sep 2026</button>
+<button onclick="filterMonth('October')">Oct 2026</button>
+<button onclick="filterMonth('November')">Nov 2026</button>
+<button onclick="filterMonth('December')">Dec 2026</button>
+<button onclick="filterMonth('February')">Feb 2026</button>
+<button onclick="filterMonth('March')">Mar 2026</button>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

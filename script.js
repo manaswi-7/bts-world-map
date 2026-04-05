@@ -50,12 +50,21 @@ const tourData = [
 // MARKERS
 tourData.forEach(place => {
 
-    var marker = L.circleMarker([place.lat, place.lng], {
-        radius: 10,
-        color: "#7e22ce",
-        fillColor: "#d946ef",
-        fillOpacity: 1
-    }).addTo(map);
+   var marker = L.circleMarker([place.lat, place.lng], {
+    radius: 9,
+    color: "#7e22ce",
+    fillColor: "#d946ef",
+    fillOpacity: 1
+}).addTo(map);
+
+// PULSE EFFECT
+setInterval(() => {
+    marker.setStyle({ radius: 14, fillOpacity: 0.4 });
+
+    setTimeout(() => {
+        marker.setStyle({ radius: 9, fillOpacity: 1 });
+    }, 500);
+}, 1500);
 
     marker.month = place.month;
     marker.title = place.city.toLowerCase();
@@ -126,4 +135,35 @@ function searchPlace() {
             marker.openPopup();
         }
     });
+}
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+
+            var userMarker = L.marker([lat, lng]).addTo(map)
+                .bindPopup("You are here 📍")
+                .openPopup();
+
+            map.setView([lat, lng], 6);
+
+        });
+    } else {
+        alert("Geolocation not supported");
+    }
+}
+let isPlaying = false;
+
+function toggleMusic() {
+    let music = document.getElementById("btsMusic");
+
+    if (isPlaying) {
+        music.pause();
+    } else {
+        music.play();
+    }
+
+    isPlaying = !isPlaying;
 }

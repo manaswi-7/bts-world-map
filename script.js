@@ -135,19 +135,42 @@ tourData.forEach(place => {
 
     let searchLink = `https://www.google.com/search?q=${place.stadium}`;
 
-    marker.bindPopup(`
-        <div style="text-align:center;">
-            <h3>${place.city}</h3>
-            <p><b>${place.stadium}</b></p>
-            <p>${dateList}</p>
+    let venueText = "";
+let exploreText = "";
 
-            <a href="${searchLink}">
-                <button style="padding:8px;background:purple;color:white;border:none;border-radius:6px;">
-                    Explore Area 🔍
-                </button>
-            </a>
-        </div>
-    `);
+// CONDITION
+if (place.stadium === "Stay Tuned") {
+    venueText = `<p><b>Venue: To be announced</b></p>`;
+    exploreText = `<p style="color:gray;">Click below to explore area</p>`;
+} else {
+    venueText = `<p><b>${place.stadium}</b></p>`;
+    exploreText = "";
+}
+
+marker.bindPopup(`
+    <div style="text-align:center;">
+        <h3>${place.city}</h3>
+
+        ${venueText}
+
+        <p>${dateList}</p>
+
+        ${exploreText}
+
+        <a href="${searchLink}">
+            <button style="
+                padding:8px;
+                background:purple;
+                color:white;
+                border:none;
+                border-radius:6px;
+                cursor:pointer;
+            ">
+                Explore Area 🔍
+            </button>
+        </a>
+    </div>
+`);
 
     markers.push(marker);
 });

@@ -1,7 +1,7 @@
 // MAP (LIGHT CLEAN MAP)
 var map = L.map('map').setView([20, 0], 2);
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap & Carto'
 }).addTo(map);
 
@@ -51,7 +51,7 @@ const tourData = [
 tourData.forEach(place => {
 
     var marker = L.circleMarker([place.lat, place.lng], {
-        radius: 9,
+        radius: 10,
         color: "#7e22ce",
         fillColor: "#d946ef",
         fillOpacity: 1

@@ -154,16 +154,3 @@ function getLocation() {
         alert("Geolocation not supported");
     }
 }
-let isPlaying = false;
-
-function toggleMusic() {
-    let music = document.getElementById("btsMusic");
-
-    if (isPlaying) {
-        music.pause();
-    } else {
-        music.play();
-    }
-
-    isPlaying = !isPlaying;
-}

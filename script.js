@@ -133,31 +133,17 @@ tourData.forEach(place => {
         }
     }).join(", ");
 
-    let searchLink = `https://www.google.com/search?q=${place.stadium}`;
-
-    let venueText = "";
-let exploreText = "";
+   let venueText = "";
+let exploreButton = "";
 
 // CONDITION
 if (place.stadium === "Stay Tuned") {
     venueText = `<p><b>Venue: To be announced</b></p>`;
-    exploreText = `<p style="color:gray;">Click below to explore area</p>`;
+    exploreButton = ""; // no button
 } else {
     venueText = `<p><b>${place.stadium}</b></p>`;
-    exploreText = "";
-}
-
-marker.bindPopup(`
-    <div style="text-align:center;">
-        <h3>${place.city}</h3>
-
-        ${venueText}
-
-        <p>${dateList}</p>
-
-        ${exploreText}
-
-        <a href="${searchLink}">
+    exploreButton = `
+        <a href="https://www.google.com/search?q=${place.stadium}">
             <button style="
                 padding:8px;
                 background:purple;
@@ -169,6 +155,18 @@ marker.bindPopup(`
                 Explore Area 🔍
             </button>
         </a>
+    `;
+}
+
+marker.bindPopup(`
+    <div style="text-align:center;">
+        <h3>${place.city}</h3>
+
+        ${venueText}
+
+        <p>${dateList}</p>
+
+        ${exploreButton}
     </div>
 `);
 

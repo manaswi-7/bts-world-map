@@ -1,7 +1,7 @@
 // MAP
 var map = L.map('map').setView([20, 0], 2);
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap & Carto'
 }).addTo(map);
 
@@ -119,10 +119,25 @@ tourData.forEach(place => {
 
     var marker = L.circleMarker([place.lat, place.lng], {
     radius: 8,
-    color: "#a855f7",       // border
-    fillColor: "#c084fc",   // inside
+    color: "#a855f7",
+    fillColor: "#c084fc",
     fillOpacity: 0.9
 }).addTo(map);
+
+// HOVER EFFECT
+marker.on('mouseover', function () {
+    this.setStyle({
+        radius: 12,
+        fillColor: "#d8b4fe"
+    });
+});
+
+marker.on('mouseout', function () {
+    this.setStyle({
+        radius: 8,
+        fillColor: "#c084fc"
+    });
+});
 
     marker.month = place.month;
     marker.title = place.city.toLowerCase();

@@ -117,7 +117,12 @@ const tourData = [
 // MARKERS
 tourData.forEach(place => {
 
-    var marker = L.marker([place.lat, place.lng]).addTo(map);
+    var marker = L.circleMarker([place.lat, place.lng], {
+    radius: 8,
+    color: "#a855f7",       // border
+    fillColor: "#c084fc",   // inside
+    fillOpacity: 0.9
+}).addTo(map);
 
     marker.month = place.month;
     marker.title = place.city.toLowerCase();
